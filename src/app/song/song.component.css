@@ -1,0 +1,13 @@
+.UserDetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.Tr td{
+    text-align: center;
+    border: 1px solid black;
+    width: 50px;
+}
+.Long{
+    width:250px;
+}

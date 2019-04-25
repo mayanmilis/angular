@@ -1,0 +1,17 @@
+<div class='ListContainer'>
+  <div>
+      <h1>{{appTitle}}</h1>
+  </div>
+  <div class='UlContainer'>
+      <table *ngIf='users'>
+        <div *ngFor='let user of users'>
+              <app-song 
+              [name]="user.name"
+              [index]="users.indexOf(user)"
+              [email]="user.email"      
+              ></app-song>
+
+        </div>
+      </table>
+  </div>
+</div>
