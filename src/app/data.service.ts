@@ -12,8 +12,7 @@ export class DataService {
     return console.log('Clicked!');
   }
   getUsers(){
-    return this.http.get('https://jsonplaceholder.typicode.com/users')
+    return this.http.get('https://fullstack-test-server.herokuapp.com/api/songs')
   }
-
   
 }

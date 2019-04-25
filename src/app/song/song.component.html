@@ -1,14 +1,22 @@
 <tr class='Tr'>
-        <td>{{index}}</td>
-        <td>Photo</td>
-        <td>
-          <div class="Long"><strong>{{name}}</strong></div>
-          <div class="Long">{{email}}</div>
+  <div class='Container'>
+      <td>{{index}}</td>
+      <td><img src={{img}}/></td>
+      <td id='title'>
+        <div><strong>{{title}}</strong></div>
+        <div id='Subtitle'>{{subtitle}}</div>
+      </td>
+      <td >
+        <div id='shazamIcon'>
+          <a href={{url}} target='_blank'>
+            <img src='http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c538.png'/>
+            <div>SHAZAM</div>
+          </a>
+        </div>
         </td>
-        <td>
-            <a>ICON</a>
-            <span>SHAZAM</span>
-        </td>
-        <td>STAR</td>
-
+      <td id='Favorites'>
+        <div id='Star'><button (click)="postSong()">star</button></div>
+        <div>add to Favorites</div>
+      </td>
+  </div>
 </tr>

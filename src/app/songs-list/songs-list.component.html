@@ -1,14 +1,19 @@
 <div class='ListContainer'>
   <div>
       <h1>{{appTitle}}</h1>
+      <input 
+      type='text'
+      />
   </div>
-  <div class='UlContainer'>
-      <table *ngIf='users'>
-        <div *ngFor='let user of users'>
+  <div>
+      <table *ngIf='songs'>
+        <div *ngFor='let song of songs.chart'>
               <app-song 
-              [name]="user.name"
-              [index]="users.indexOf(user)"
-              [email]="user.email"      
+              [index]="songs.chart.indexOf(song)+1"
+              [title]="song.heading.title"
+              [subtitle]="song.heading.subtitle"  
+              [img]="song.images.default"    
+              [url]="song.url"
               ></app-song>
 
         </div>

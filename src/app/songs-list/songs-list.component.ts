@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../data.service';
 
 
@@ -11,14 +11,14 @@ import { DataService } from '../data.service';
 export class SongsListComponent implements OnInit {
 
   appTitle: string = 'Top 200 Song List';
-  users: Object;
+  songs: Object;
 
   constructor(private data: DataService ) { }
 
   ngOnInit() {
     this.data.getUsers().subscribe(data => {
-      this.users = data;
-      console.log(this.users);
+      this.songs = data;
+      console.log(this.songs);
     })
   }
 

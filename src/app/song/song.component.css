@@ -1,13 +1,57 @@
-.UserDetails{
+.Tr :hover{
+    background-color: rgb(255, 248, 235);
+    transition: 400ms;
+}
+.Container{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    transition: 300ms;
 }
-.Tr td{
-    text-align: center;
-    border: 1px solid black;
-    width: 50px;
+.Container td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
 }
-.Long{
-    width:250px;
+.Container td img{
+    width: 100px;
+    height: auto;
+}
+.Container td[id='title']{
+    width:150px;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.8em;
+    padding-left: 10px;
+}
+.Container td[id='title'] div[id='Subtitle']{   
+    color: rgb(190, 190, 190);
+    font-size: 0.75em;
+}
+.Container td div[id='shazamIcon'] a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6em;
+    font-weight: 700;
+    text-decoration: none;
+    color: black;
+}
+.Container td div[id='shazamIcon'] img{
+    width: 20px;
+    height: 20px;
+}
+.Container td[id='Favorites']{
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75em;
+    width: 200px;
+}
+.Container td div[id='Star'] {
+    font-size: 1.5em;
+    font-weight: 700;
+    color:rgb(255, 196, 0);
 }
