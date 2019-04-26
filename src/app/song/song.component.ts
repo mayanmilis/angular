@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Song } from '../models';
 
 
 
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit {
+  @Input() song: Song;
   @Input() title: String;
   @Input() subtitle: String;
   @Input() index: Number;

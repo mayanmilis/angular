@@ -3,13 +3,17 @@
       <h1>{{appTitle}}</h1>
       <input 
       type='text'
+      name='search'
+      [(ngModel)]='searchText'
+      (ngModelChange)='searchChanged()'
       />
   </div>
   <div>
       <table *ngIf='songs'>
-        <div *ngFor='let song of songs.chart'>
+        <div *ngFor='let song of filteredSongs; let i = index'>
               <app-song 
-              [index]="songs.chart.indexOf(song)+1"
+              [index]="i+1"
+              [song]='song'
               [title]="song.heading.title"
               [subtitle]="song.heading.subtitle"  
               [img]="song.images.default"    
