@@ -15,6 +15,8 @@ export class SongsListComponent implements OnInit {
   songs: Song[];
   filteredSongs: Song[];
   searchText: string;
+  loader: string;
+  favorites: object;
 
   
   constructor(private data: DataService) { }
@@ -23,6 +25,13 @@ export class SongsListComponent implements OnInit {
     this.data.getUsers().subscribe((data:SongsResponse) => {
       this.songs = data.chart;
       this.filteredSongs = data.chart;
+      if(this.songs){
+        this.loader = 'none';
+      }
+      this.data.getAllFavorites().subscribe(data =>  {
+        this.favorites = data;
+      })
+      console.log(this.favorites);
       console.log(this.songs);
     })
   }
@@ -33,7 +42,7 @@ export class SongsListComponent implements OnInit {
     }
     else{
 
-      this.filteredSongs = this.songs.filter(item => item.heading.title.includes(this.searchText));
+      this.filteredSongs = this.songs.filter(item => item.heading.title.toLocaleLowerCase().indexOf(this.searchText.toLocaleLowerCase())>-1);
       console.log(this.searchText);
     }
   }

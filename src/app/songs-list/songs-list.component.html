@@ -1,13 +1,17 @@
 <div class='ListContainer'>
   <div>
       <h1>{{appTitle}}</h1>
+  <div class='Input'>
       <input 
       type='text'
+      placeholder="Song Search"
       name='search'
       [(ngModel)]='searchText'
       (ngModelChange)='searchChanged()'
       />
   </div>
+  </div>
+  <div [style.display]='loader' class="lds-facebook"><div></div><div></div><div></div></div>
   <div>
       <table *ngIf='songs'>
         <div *ngFor='let song of filteredSongs; let i = index'>
@@ -19,7 +23,6 @@
               [img]="song.images.default"    
               [url]="song.url"
               ></app-song>
-
         </div>
       </table>
   </div>

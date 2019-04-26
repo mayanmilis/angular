@@ -14,5 +14,7 @@ export class DataService {
   getUsers(){
     return this.http.get('https://fullstack-test-server.herokuapp.com/api/songs')
   }
-  
+  getAllFavorites(){
+    return this.http.get('https://fullstack-test-server.herokuapp.com/api/getAllFavorites')
+  }
 }
