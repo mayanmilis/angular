@@ -18,20 +18,23 @@ export class SongsListComponent implements OnInit {
   loader: string;
   favorites: object;
 
+
   
   constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getFavorites().subscribe(data =>  {
+      this.favorites = data;
+      console.log(data, 'yona');
+    });
+    
     this.data.getUsers().subscribe((data:SongsResponse) => {
       this.songs = data.chart;
       this.filteredSongs = data.chart;
       if(this.songs){
         this.loader = 'none';
       }
-      this.data.getAllFavorites().subscribe(data =>  {
-        this.favorites = data;
-      })
-      console.log(this.favorites);
+
       console.log(this.songs);
     })
   }

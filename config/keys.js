@@ -1,3 +1,3 @@
 module.exports = {  
-    mongoURI: 'mongodb://<dbuser>:<dbpassword>@ds147566.mlab.com:47566/imprint'
+    mongoURI: 'mongodb://admin:admin123456@ds145486.mlab.com:45486/imprint'
 }
