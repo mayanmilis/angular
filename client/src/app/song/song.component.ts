@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Song } from '../models';
 import { DataService } from '../data.service';
 
-
-
 @Component({
   selector: 'app-song',
   templateUrl: './song.component.html',
@@ -17,37 +15,72 @@ export class SongComponent implements OnInit {
   @Input() img: String;
   shazamIcon: String='http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c538.png';
   @Input() url: String;
-  favorites: Object;
-  id: String;
+  isFavorite: Boolean;
+  divStyle: String;
+  divId: String;
+  divClick: Function;
+  buttonValue: String;
+  buttonNote: String;
+  star: String;
+
 
   
-  
-  
-
   constructor(private data: DataService) { }
 
   ngOnInit() {
-  }
-  getFavorites()  {
+    this.title = this.title.toUpperCase();
+    let favorites;
     this.data.getFavorites().subscribe(data =>  {
-      this.favorites = data;
-      console.log(this.favorites);
+      favorites = Object.values(data);
+      this.favoritesCheck(favorites);
+
     });
-    let x = Object.keys(this.favorites);
-    
-    
-    
+
   }
+  
+  async favoritesCheck(arr){
+    await arr.map(item => {
+      if(item.name===this.title){
+        this.isFavorite = true;
+      }
+    });
+    if(this.isFavorite){
+      this.divClick = this.removeFromFavorites;
+      this.buttonNote = 'Remove from favorites'
+      this.divStyle = 'rgb(255, 222, 161)';
+      this.star = "../../assets/images/added.png";
+    }else{
+      this.divClick = this.addToFavorites;
+      this.buttonNote = 'add to favorites';
+      this.star = "../../assets/images/notAdded.png";
+      this.divStyle = ''
+    }
+  };
+
   addToFavorites()  {
     let value = {"name": this.title}
-    this.data.addToFavorites(value).subscribe(data =>  {
-      console.log(data)
+    this.data.addToFavorites(value).subscribe( () =>  {
+      this.ngOnInit();
     });
   }
   removeFromFavorites() {
-    this.data.removeFromFavorites().subscribe(data => {
-      console.log(data);
-    })
+    let favorites;
+    let id;
+    this.data.getFavorites().subscribe(data =>  {
+      favorites = Object.values(data);
+      favorites.map(item => {
+        if(item.name===this.title){
+          id = item._id;
+          this.data.removeFromFavorites(id).subscribe(data => {
+            
+            this.isFavorite = false;
+            this.ngOnInit()
+          });
+        }else{  
+          return null;
+        }
+      });
+    });
   }
   
   

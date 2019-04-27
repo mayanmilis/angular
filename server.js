@@ -7,8 +7,6 @@ const items = require('./routes/api/items');
 const app = express();
 
 
-
-//Bodyparser Middleware
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
@@ -24,19 +22,15 @@ app.use(function(req, res, next) {
   next();
   });
 
-//DB Config
+
 const db = require('./config/keys').mongoURI;
 
-//Connect to Mongo
 mongoose
     .connect(db)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 
 
-
-      
-//Use Routes
 app.use('/api/items', items)
 
 const port = process.env.PORT || 5000;

@@ -50,7 +50,11 @@
     font-size: 0.75em;
     width: 200px;
 }
-.Container td div[id='Star'] {
+.Container td div[id='favoritesImg'] img{
+    width: 30px;
+    height: 30px;
+}
+.Container td div[id='notAddedToFavorites'] {
     font-size: 1.5em;
     font-weight: 700;
     color:rgb(255, 196, 0);

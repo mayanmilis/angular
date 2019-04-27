@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { SongsResponse, Song } from '../models';
 
@@ -25,17 +25,14 @@ export class SongsListComponent implements OnInit {
   ngOnInit() {
     this.data.getFavorites().subscribe(data =>  {
       this.favorites = data;
-      console.log(data, 'yona');
     });
     
-    this.data.getUsers().subscribe((data:SongsResponse) => {
+    this.data.getSongs().subscribe((data:SongsResponse) => {
       this.songs = data.chart;
       this.filteredSongs = data.chart;
       if(this.songs){
         this.loader = 'none';
       }
-
-      console.log(this.songs);
     })
   }
 

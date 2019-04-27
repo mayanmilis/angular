@@ -1,5 +1,5 @@
 <tr class='Tr'>
-  <div class='Container'>
+  <div [style.background-color]='divStyle' class='Container' >
       <td>{{index}}</td>
       <td><img src={{img}}/></td>
       <td id='title'>
@@ -15,9 +15,8 @@
         </div>
         </td>
       <td id='Favorites'>
-        <div id='Star'><button (click)="addToFavorites()">star</button></div>
-        <div id='Star'><button (click)="removeFromFavorites()">remove</button></div>
-        <div>add to Favorites</div>
+        <div id='favoritesImg' (click)="divClick()"><img src={{star}}></div>
+        <div>{{buttonNote}}</div>
       </td>
   </div>
 </tr>
