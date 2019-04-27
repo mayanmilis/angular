@@ -43,7 +43,6 @@ export class SongsListComponent implements OnInit {
     else{
 
       this.filteredSongs = this.songs.filter(item => item.heading.title.toLocaleLowerCase().indexOf(this.searchText.toLocaleLowerCase())>-1);
-      console.log(this.searchText);
     }
   }
 
