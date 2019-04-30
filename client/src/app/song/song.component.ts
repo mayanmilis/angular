@@ -58,14 +58,16 @@ export class SongComponent implements OnInit {
   };
 
   addToFavorites()  {
-    let value = {"name": this.title}
+    let value = {"name": this.title};
+    this.isFavorite = true;
     this.data.addToFavorites(value).subscribe( () =>  {
-      this.ngOnInit();
     });
+    this.favoritesCheck([]);
   }
   removeFromFavorites() {
     let favorites;
     let id;
+    this.isFavorite = false;
     this.data.getFavorites().subscribe(data =>  {
       favorites = Object.values(data);
       favorites.map(item => {
@@ -74,13 +76,14 @@ export class SongComponent implements OnInit {
           this.data.removeFromFavorites(id).subscribe(data => {
             
             this.isFavorite = false;
-            this.ngOnInit()
+            
           });
         }else{  
           return null;
         }
       });
     });
+    this.favoritesCheck([]);
   }
   
   
